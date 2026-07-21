@@ -1,0 +1,675 @@
+<title>INEA's Spain Brands for Collab</title>
+<style>
+  :root{
+    --bg:#ede6d8;
+    --surface:#fffcf6;
+    --surface-2:#f6efe1;
+    --ink:#241f1a;
+    --ink-soft:#5c5348;
+    --rule:rgba(36,31,26,0.14);
+    --gold:#8a6a34;
+    --gold-soft:#f1e3c2;
+    --teal:#2b625c;
+    --teal-soft:#dfe9e2;
+    --terracotta:#a8552f;
+    --terracotta-soft:#f3ddce;
+    --shadow: 0 1px 2px rgba(36,31,26,0.06), 0 8px 24px -16px rgba(36,31,26,0.25);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#161209;
+      --surface:#211a11;
+      --surface-2:#271f14;
+      --ink:#f1e7d6;
+      --ink-soft:#c2b6a2;
+      --rule:rgba(241,231,214,0.14);
+      --gold:#dcae5f;
+      --gold-soft:#3a2f18;
+      --teal:#7fc2b6;
+      --teal-soft:#1e3330;
+      --terracotta:#e08e63;
+      --terracotta-soft:#3a2419;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 28px -16px rgba(0,0,0,0.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#161209; --surface:#211a11; --surface-2:#271f14; --ink:#f1e7d6; --ink-soft:#c2b6a2;
+    --rule:rgba(241,231,214,0.14); --gold:#dcae5f; --gold-soft:#3a2f18; --teal:#7fc2b6; --teal-soft:#1e3330;
+    --terracotta:#e08e63; --terracotta-soft:#3a2419; --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 28px -16px rgba(0,0,0,0.6);
+  }
+  :root[data-theme="light"]{
+    --bg:#ede6d8; --surface:#fffcf6; --surface-2:#f6efe1; --ink:#241f1a; --ink-soft:#5c5348;
+    --rule:rgba(36,31,26,0.14); --gold:#8a6a34; --gold-soft:#f1e3c2; --teal:#2b625c; --teal-soft:#dfe9e2;
+    --terracotta:#a8552f; --terracotta-soft:#f3ddce; --shadow: 0 1px 2px rgba(36,31,26,0.06), 0 8px 24px -16px rgba(36,31,26,0.25);
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:-apple-system,"Segoe UI",Helvetica Neue,Arial,sans-serif;
+    line-height:1.5;
+    max-width:1040px;
+    margin:0 auto;
+    padding:56px 28px 96px;
+  }
+  .serif{ font-family:"Iowan Old Style","Palatino Linotype","Book Antiqua",Georgia,serif; }
+  .mono{ font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace; }
+
+  header.masthead{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    padding-bottom:32px;
+    border-bottom:1px solid var(--rule);
+    margin-bottom:32px;
+  }
+  .eyebrow{
+    font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+    font-size:11.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--gold);
+  }
+  h1{
+    font-family:"Iowan Old Style","Palatino Linotype","Book Antiqua",Georgia,serif;
+    font-weight:400;
+    font-size:clamp(30px,4vw,42px);
+    margin:0;
+    text-wrap:balance;
+    letter-spacing:-0.01em;
+  }
+  .dek{
+    max-width:66ch;
+    color:var(--ink-soft);
+    font-size:16px;
+  }
+
+  .criteria{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:1px;
+    background:var(--rule);
+    border:1px solid var(--rule);
+    border-radius:10px;
+    overflow:hidden;
+    margin-bottom:40px;
+  }
+  .criteria div{
+    background:var(--surface);
+    padding:16px 18px;
+  }
+  .criteria .label{
+    font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+    font-size:10.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-bottom:6px;
+  }
+  .criteria .value{ font-size:14.5px; }
+
+  .legend{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 20px;
+    margin-bottom:44px;
+    align-items:center;
+  }
+  .chip{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+    font-size:11px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    padding:4px 10px;
+    border-radius:999px;
+    white-space:nowrap;
+  }
+  .chip.gold{ background:var(--gold-soft); color:var(--gold); }
+  .chip.teal{ background:var(--teal-soft); color:var(--teal); }
+  .chip.terracotta{ background:var(--terracotta-soft); color:var(--terracotta); }
+  .chip.outline{ background:transparent; color:var(--ink-soft); border:1px dashed var(--rule); }
+  .legend-note{ font-size:13px; color:var(--ink-soft); }
+
+  nav.jump{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:56px;
+  }
+  nav.jump a{
+    font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+    font-size:12px;
+    letter-spacing:0.04em;
+    text-decoration:none;
+    color:var(--ink);
+    background:var(--surface);
+    border:1px solid var(--rule);
+    padding:7px 13px;
+    border-radius:8px;
+  }
+  nav.jump a:hover, nav.jump a:focus-visible{ border-color:var(--gold); color:var(--gold); }
+
+  section.category{ margin-bottom:56px; scroll-margin-top:20px; }
+  .category-head{
+    display:flex;
+    align-items:baseline;
+    gap:16px;
+    flex-wrap:wrap;
+    margin-bottom:6px;
+  }
+  .category-head h2{
+    font-family:"Iowan Old Style","Palatino Linotype","Book Antiqua",Georgia,serif;
+    font-weight:400;
+    font-size:23px;
+    margin:0;
+  }
+  .category-count{
+    font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+    font-size:11px;
+    color:var(--ink-soft);
+    letter-spacing:0.04em;
+  }
+  .category-intro{
+    color:var(--ink-soft);
+    font-size:14.5px;
+    max-width:70ch;
+    margin:0 0 20px;
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(272px,1fr));
+    gap:14px;
+  }
+  .card{
+    background:var(--surface);
+    border:1px solid var(--rule);
+    border-radius:12px;
+    padding:18px 18px 16px;
+    box-shadow:var(--shadow);
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    position:relative;
+  }
+  .card .top-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:10px;
+  }
+  .card h3{
+    font-family:"Iowan Old Style","Palatino Linotype","Book Antiqua",Georgia,serif;
+    font-weight:400;
+    font-size:19px;
+    margin:0;
+  }
+  .star{
+    color:var(--gold);
+    font-size:12px;
+    font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  }
+  .meta{
+    font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+    font-size:10.5px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  .desc{ font-size:13.5px; color:var(--ink); }
+  .angle{
+    font-size:13px;
+    color:var(--ink-soft);
+    font-style:italic;
+    border-top:1px dashed var(--rule);
+    padding-top:8px;
+    margin-top:2px;
+  }
+  .link{
+    font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+    font-size:11px;
+    color:var(--teal);
+    text-decoration:none;
+    word-break:break-all;
+  }
+  .link:hover{ text-decoration:underline; }
+
+  footer{
+    margin-top:48px;
+    padding-top:24px;
+    border-top:1px solid var(--rule);
+    font-size:13px;
+    color:var(--ink-soft);
+    max-width:70ch;
+  }
+  footer strong{ color:var(--ink); }
+</style>
+
+<header class="masthead">
+  <div class="eyebrow">INEA's Spain Brands for Collab · July 2026</div>
+  <h1>Spain-based brands &amp; venues for exclusive charm collaborations</h1>
+  <p class="dek">A working shortlist for INEA, split into two outreach tracks: Spain-based fashion brands, and Spain's leading spa &amp; wellness hotels and centers. The fashion track is sized up against your own reference names (LUPO, GIMAGUAS, HEREU, THINKING MU, BOBO CHOSES, SARDA); everything is checked against current status as of July 2026.</p>
+</header>
+
+<div class="criteria">
+  <div><div class="label">Positioning</div><div class="value">Premium &amp; established luxury · emerging designer · affordable/accessible luxury · silent luxury</div></div>
+  <div><div class="label">Fashion categories</div><div class="value">Clothing · shoes &amp; bags · accessories &amp; jewelry · swimwear &amp; resortwear</div></div>
+  <div><div class="label">Geography</div><div class="value">HQ or roots in Spain — Barcelona, Madrid, Mallorca, Menorca, Ibiza, Córdoba, Seville, Marbella, Galicia</div></div>
+</div>
+
+<div class="legend">
+  <span class="chip gold">Premium / established</span>
+  <span class="chip teal">Emerging / boutique</span>
+  <span class="chip terracotta">Affordable / accessible luxury</span>
+  <span class="legend-note">&mdash; tier shown on each card; in the Spa &amp; Wellness section the same colors mark flagship / boutique retreat / heritage thermal</span>
+</div>
+
+<nav class="jump">
+  <a href="#clothing">Clothing</a>
+  <a href="#shoes-bags">Shoes &amp; Bags</a>
+  <a href="#accessories">Accessories &amp; Jewelry</a>
+  <a href="#swim">Swimwear &amp; Resortwear</a>
+  <a href="#spa">Spa &amp; Wellness</a>
+</nav>
+
+<section class="category" id="clothing">
+  <div class="category-head"><h2>Clothing</h2><span class="category-count">11 brands</span></div>
+  <p class="category-intro">Ready-to-wear where a charm reads as a hang-tag, zipper-pull, or knitwear tag collab — strongest with brands that already lean into small tactile details.</p>
+  <div class="grid">
+
+    <div class="card">
+      <div class="top-row"><h3>Thinking Mu</h3><span class="chip terracotta">Affordable luxury</span></div>
+      <div class="meta">Barcelona · knitwear &amp; ready-to-wear <span class="star">★ your list</span></div>
+      <div class="desc">Mediterranean, artisanal-leaning knitwear and separates with a strong textile identity.</div>
+      <div class="angle">Knit tag charm tied to a signature cardigan or sweater drop.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>Paloma Wool</h3><span class="chip teal">Emerging designer</span></div>
+      <div class="meta">Barcelona · art-fashion ready-to-wear (founded 2014)</div>
+      <div class="desc">Paloma Lanna's small-batch label blurring art, photography and fashion — hand-drawn prints, sculptural knitwear, cult international following.</div>
+      <div class="angle">Art-print charm pulled from a seasonal photo/collage story.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>Nice Things Paloma S.</h3><span class="chip terracotta">Affordable luxury</span></div>
+      <div class="meta">Barcelona · contemporary womenswear (founded 1995)</div>
+      <div class="desc">Family-run label started by Paloma Santaolalla and Miguel Lanna — three decades of print-led, detail-oriented ready-to-wear across Spain, France and Portugal. (Paloma Wool's founder is their daughter.)</div>
+      <div class="angle">Signature-print charm as a loyalty gift for repeat shoppers.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>Bobo Choses</h3><span class="chip terracotta">Affordable luxury</span></div>
+      <div class="meta">Barcelona · playful ready-to-wear <span class="star">★ your list</span></div>
+      <div class="desc">Illustration-driven, collectible prints; adult and kids lines with a cult following.</div>
+      <div class="angle">Illustrated charm as a wearable extension of a print capsule.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>Palomo Spain</h3><span class="chip gold">Established designer</span></div>
+      <div class="meta">Córdoba / Madrid · genderfluid couture</div>
+      <div class="desc">Founded 2015 by Alejandro Gómez Palomo; theatrical, baroque-Andalusian tailoring worn by Beyoncé and Rihanna.</div>
+      <div class="angle">Statement runway-adjacent charm for a capsule or red-carpet moment.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>LAAGAM</h3><span class="chip terracotta">Affordable luxury</span></div>
+      <div class="meta">Barcelona · contemporary womenswear</div>
+      <div class="desc">Founded 2017; structured tailoring and fluid draping — one of Spain's fastest-growing "attainable luxury" labels.</div>
+      <div class="angle">Charm bundled with a signature trouser or blazer launch.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>La Veste</h3><span class="chip teal">Emerging designer</span></div>
+      <div class="meta">Madrid · made-in-Spain womenswear</div>
+      <div class="desc">Founded by Blanca Miró and María de la Orden; bold prints, offbeat cuts, strong editorial following.</div>
+      <div class="angle">Limited charm co-drop tied to a seasonal print story.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>Ecoalf</h3><span class="chip terracotta">Affordable luxury</span></div>
+      <div class="meta">Madrid · sustainable outerwear</div>
+      <div class="desc">Recycled-material outerwear and knitwear with a strong sustainability narrative.</div>
+      <div class="angle">Charm made from recycled metal, matching the brand's material story.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>Silbon</h3><span class="chip terracotta">Affordable luxury</span></div>
+      <div class="meta">Córdoba · premium menswear</div>
+      <div class="desc">Founded 2009; timeless tailoring, strong retail footprint across Spain.</div>
+      <div class="angle">Keyring or bag charm as a menswear accessory add-on.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>Scalpers</h3><span class="chip gold">Premium / established</span></div>
+      <div class="meta">Seville · upscale menswear</div>
+      <div class="desc">Founded 2007; "rebellious elegance" tailoring, 270+ stores worldwide as of 2024.</div>
+      <div class="angle">Charm as part of a made-to-measure or capsule gifting line.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>Sepiia</h3><span class="chip terracotta">Affordable luxury</span></div>
+      <div class="meta">Barcelona · smart-fabric fashion</div>
+      <div class="desc">Made in Spain/Portugal, anti-stain and anti-wrinkle technical fabrics for men's and women's wear.</div>
+      <div class="angle">Functional-meets-decorative charm tied to travel or "smart" capsule.</div>
+    </div>
+
+  </div>
+</section>
+
+<section class="category" id="shoes-bags">
+  <div class="category-head"><h2>Shoes &amp; Bags</h2><span class="category-count">14 brands</span></div>
+  <p class="category-intro">The most natural charm category — zipper pulls, keyring charms, and bag charms are already a native accessory here. Mietis, Moi &amp; Sass, Reliquiae and Manuel Dreesmann are the closest direct comparables to LUPO: small-studio, sculptural, made-in-Spain bag labels at a similar scale.</p>
+  <div class="grid">
+
+    <div class="card">
+      <div class="top-row"><h3>Hereu</h3><span class="chip gold">Premium / established</span></div>
+      <div class="meta">Mallorca / Barcelona · leather bags &amp; shoes <span class="star">★ your list</span></div>
+      <div class="desc">Founded 2014; family-run Spanish ateliers, Mediterranean forms, now genuinely global "silent luxury" leather house.</div>
+      <div class="angle">Signature bag charm variant matching a hero bag silhouette.</div>
+      <a class="link" href="https://hereustudio.com" target="_blank" rel="noopener">hereustudio.com</a>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>LUPO</h3><span class="chip gold">Premium / established</span></div>
+      <div class="meta">Barcelona · bags (est. 1950 boutique) <span class="star">★ your list</span></div>
+      <div class="desc">Family house since the 1920s; Gaudí-inspired sculptural pleating (the MIPEL-award-winning Abanico), handcrafted in Ubrique.</div>
+      <div class="angle">Charm echoing the Abanico's pleated silhouette as a keychain miniature.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>Mietis</h3><span class="chip teal">Emerging designer</span></div>
+      <div class="meta">Barcelona · sculptural bags (founded 2017)</div>
+      <div class="desc">María Fontanellas' studio label — bold color, architectural silhouettes, made in Barcelona and Ubrique, €300–500 range.</div>
+      <div class="angle">Closest LUPO peer — a colour-matched charm for a seasonal Mietis drop.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>Moi &amp; Sass</h3><span class="chip teal">Emerging designer</span></div>
+      <div class="meta">Madrid · bags (founded 2018)</div>
+      <div class="desc">Founded by Moira Laporta and Alessandra de Osma; sculptural yet wearable shapes, made in Spain from LWG-certified leather.</div>
+      <div class="angle">Charm as a co-branded gift with a signature investment-bag purchase.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>Reliquiae</h3><span class="chip gold">Premium / established</span></div>
+      <div class="meta">Madrid / Gijón · architectural bags (since 2011)</div>
+      <div class="desc">Héctor Jareño's studio, built on his father's 1957 leatherworking atelier; clean, proportion-driven, couture-referenced design — explicitly open to collaborations.</div>
+      <div class="angle">Directly collaboration-minded — strong first-outreach candidate.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>Manuel Dreesmann</h3><span class="chip terracotta">Affordable luxury</span></div>
+      <div class="meta">Barcelona · bags (Atelier Madre, founded 2018)</div>
+      <div class="desc">Direct-to-consumer minimalist leather bags handmade in Barcelona at an accessible price point.</div>
+      <div class="angle">Entry-price charm bundle for a younger gifting audience.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>Miista</h3><span class="chip teal">Emerging designer</span></div>
+      <div class="meta">Made in Spain/Portugal · footwear</div>
+      <div class="desc">Avant-garde, sculptural shoes handmade by artisans; worn by Charli XCX and Kendall Jenner.</div>
+      <div class="angle">Sculptural charm echoing a heel or sole detail.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>Carmina Shoemaker</h3><span class="chip gold">Premium / established</span></div>
+      <div class="meta">Mallorca (Inca) · heritage footwear</div>
+      <div class="desc">Long-running Goodyear-welted shoemaker; one of Spain's best-known luxury footwear exports.</div>
+      <div class="angle">Classic engraved charm for shoe-care kits or gifting boxes.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>Lottusse</h3><span class="chip gold">Premium / established</span></div>
+      <div class="meta">Mallorca · heritage leather (est. 1877)</div>
+      <div class="desc">Nearly 150-year-old leather house; traditional craftsmanship, both footwear and leather goods.</div>
+      <div class="angle">Heritage-crest-style charm for anniversary or archive capsules.</div>
+      <a class="link" href="https://lottusse.com" target="_blank" rel="noopener">lottusse.com</a>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>TLB Mallorca</h3><span class="chip teal">Emerging designer</span></div>
+      <div class="meta">Mallorca (Inca) · handcrafted menswear shoes</div>
+      <div class="desc">Founded by Toni Llobera Barceló; shoes made entirely from island-based resources and workshops.</div>
+      <div class="angle">Small hallmark-style charm reflecting island provenance.</div>
+      <a class="link" href="https://www.tlbmallorca.com" target="_blank" rel="noopener">tlbmallorca.com</a>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>Pons / Avarcas</h3><span class="chip terracotta">Affordable luxury</span></div>
+      <div class="meta">Menorca · leather sandals</div>
+      <div class="desc">Menorcan artisan-made avarca sandals; simple forms, strong summer-uniform status.</div>
+      <div class="angle">Ankle-strap sandal charm for a warm-weather capsule.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>Magrit</h3><span class="chip gold">Premium / established</span></div>
+      <div class="meta">Elda (Alicante) · women's luxury footwear</div>
+      <div class="desc">Established Spanish women's shoe house known for craftsmanship out of the Elda shoemaking region.</div>
+      <div class="angle">Heel or buckle-echo charm for evening lines.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>Chie Mihara</h3><span class="chip teal">Emerging designer</span></div>
+      <div class="meta">Elda (Alicante) · design-forward footwear</div>
+      <div class="desc">Japanese-Spanish designer known for sculptural, color-blocked, architectural shoe design.</div>
+      <div class="angle">Colour-blocked charm mirroring a signature shoe palette.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>Karine Arabian</h3><span class="chip outline">Paris — not Spain</span></div>
+      <div class="meta">Paris, France (est. 2000) · footwear &amp; accessories</div>
+      <div class="desc">French-Armenian designer known for rounded-toe shoes and accessories; has designed for Madonna and jewelry for Chanel. Requested addition — flagged since it sits outside this doc's Spain-based criteria, sold through Spanish retailers like Spartoo.</div>
+      <div class="angle">Statement charm for a capsule collection, if pursuing outside Spain's borders.</div>
+    </div>
+
+  </div>
+</section>
+
+<section class="category" id="accessories">
+  <div class="category-head"><h2>Accessories &amp; Jewelry</h2><span class="category-count">5 brands</span></div>
+  <p class="category-intro">The closest category to INEA's own product — collaborations here read as co-branded jewelry rather than a licensed add-on.</p>
+  <div class="grid">
+
+    <div class="card">
+      <div class="top-row"><h3>Uno de 50</h3><span class="chip terracotta">Affordable luxury</span></div>
+      <div class="meta">Madrid · handcrafted statement jewelry</div>
+      <div class="desc">Founded on a 50-unit limited-production model; bold resin and silver pieces, all handmade in Spain.</div>
+      <div class="angle">Direct product overlap — a co-branded limited-edition charm run.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>PDPaola</h3><span class="chip terracotta">Affordable luxury</span></div>
+      <div class="meta">Barcelona · everyday fine jewelry</div>
+      <div class="desc">Minimal, stackable gold-plated pieces at accessible price points; strong DTC and gifting business.</div>
+      <div class="angle">Charm designed to clip onto PDPaola's existing chain styles.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>Malababa</h3><span class="chip gold">Premium / established</span></div>
+      <div class="meta">Madrid · leather &amp; jewelry accessories</div>
+      <div class="desc">Established Spanish accessories house spanning sculptural leather goods and jewelry.</div>
+      <div class="angle">Leather-and-metal hybrid charm bridging both product lines.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>TOUS</h3><span class="chip gold">Premium / established</span></div>
+      <div class="meta">Catalonia · jewelry, accessories &amp; bags (est. 1920)</div>
+      <div class="desc">Over a century old, originally a watchmaker; now a major Spanish jewelry and accessories house.</div>
+      <div class="angle">Charm as a gateway product for a younger diffusion line.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>Meller</h3><span class="chip terracotta">Affordable luxury</span></div>
+      <div class="meta">Alicante · eyewear &amp; accessories</div>
+      <div class="desc">Design-driven, colour-forward sunglasses brand with a strong social following.</div>
+      <div class="angle">Case charm or lanyard charm tied to a seasonal frame colourway.</div>
+    </div>
+
+  </div>
+</section>
+
+<section class="category" id="swim">
+  <div class="category-head"><h2>Swimwear &amp; Resortwear</h2><span class="category-count">8 brands</span></div>
+  <p class="category-intro">Charms translate well as anklets, hair pieces, or bag charms for beach totes — this category over-indexes on Ibiza and Mallorca-based labels.</p>
+  <div class="grid">
+
+    <div class="card">
+      <div class="top-row"><h3>Gimaguas</h3><span class="chip teal">Emerging designer</span></div>
+      <div class="meta">Barcelona / Ibiza · resortwear &amp; swim <span class="star">★ your list</span></div>
+      <div class="desc">Founded 2018; slow-fashion, small-batch Mediterranean resortwear — the breakout brand of summer 2025.</div>
+      <div class="angle">Anklet or hair charm to match a signature crochet or print piece.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>Sarda</h3><span class="chip gold">Premium / established</span></div>
+      <div class="meta">Barcelona · lingerie &amp; swimwear (est. 1962) <span class="star">★ your list</span></div>
+      <div class="desc">Formerly Andrés Sardá; rebranded to Sarda in 2024 for its 60th year — established Spanish luxury lingerie and swim house.</div>
+      <div class="angle">Delicate charm bridging lingerie hardware and swim ties.</div>
+      <a class="link" href="https://www.sardaworld.com" target="_blank" rel="noopener">sardaworld.com</a>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>Dua Swimwear</h3><span class="chip teal">Emerging designer</span></div>
+      <div class="meta">Barcelona · swim</div>
+      <div class="desc">Mediterranean-inspired, second-skin-fit swimwear from a Barcelona studio.</div>
+      <div class="angle">Charm on a bikini tie or cover-up drawstring.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>Ibicenca Swim</h3><span class="chip gold">Premium / established</span></div>
+      <div class="meta">Ibiza · luxury sustainable swim</div>
+      <div class="desc">Ibiza-designed, minimal-coverage swimwear in sustainable shine fabrics.</div>
+      <div class="angle">Sun-motif charm tied to the brand's Ibiza sunset palette.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>Azur Ibiza</h3><span class="chip teal">Emerging designer</span></div>
+      <div class="meta">Ibiza · swim</div>
+      <div class="desc">Swimwear created and produced on the island, with an island-lifestyle brand identity.</div>
+      <div class="angle">Bag charm for beach-tote bundling with swim orders.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>Benibeca</h3><span class="chip gold">Premium / established</span></div>
+      <div class="meta">Ibiza · men's luxury resortwear</div>
+      <div class="desc">Sustainable, nomad-inspired men's swim shorts and resort garments at a premium price point.</div>
+      <div class="angle">Understated metal charm for a men's swim-short drawstring or pouch.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>Robin Collection</h3><span class="chip gold">Premium / established</span></div>
+      <div class="meta">Spain · celebrity-favored swim</div>
+      <div class="desc">Fast-growing luxury swimwear label worn by Shakira and Rafael Nadal.</div>
+      <div class="angle">Celebrity-facing capsule charm with strong gifting potential.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>Cocora</h3><span class="chip terracotta">Affordable luxury</span></div>
+      <div class="meta">Ibiza · eco-luxury swim</div>
+      <div class="desc">Feminine, free-spirited eco-conscious swimwear and dresses out of Ibiza.</div>
+      <div class="angle">Raffia-and-metal charm mix echoing the brand's boho materials.</div>
+    </div>
+
+  </div>
+</section>
+
+<section class="category" id="spa">
+  <div class="category-head"><h2>Spa &amp; Wellness</h2><span class="category-count">12 venues</span></div>
+  <p class="category-intro">A separate collab track from fashion — charms here work as boutique/gift-shop retail, robe or key-fob charms, and treatment-programme keepsakes rather than garment add-ons. Gold marks world-renowned flagships, teal marks smaller boutique/emerging retreats, terracotta marks heritage thermal &amp; thalasso houses.</p>
+  <div class="grid">
+
+    <div class="card">
+      <div class="top-row"><h3>SHA Wellness Clinic</h3><span class="chip gold">Flagship</span></div>
+      <div class="meta">Altea, Alicante · medical wellness</div>
+      <div class="desc">Cliffside clinic over the Mediterranean, widely ranked the world's leading medical wellness destination.</div>
+      <div class="angle">Longevity-programme graduation charm as a keepsake gift.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>Six Senses Ibiza</h3><span class="chip gold">Flagship</span></div>
+      <div class="meta">Cala Xarraca, Ibiza · resort &amp; longevity</div>
+      <div class="desc">1,200sqm spa and RoseBar Longevity Centre blending biohacking with shamanic healing on Ibiza's quiet north coast.</div>
+      <div class="angle">Boutique retail charm sold alongside spa amenity kits.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>Finca Cortesín Spa</h3><span class="chip gold">Flagship</span></div>
+      <div class="meta">Casares, Málaga · destination resort spa</div>
+      <div class="desc">2,200sqm spa with thermal baths and multi-national therapist team, part of the wider Finca Cortesín estate.</div>
+      <div class="angle">Robe-tie or slipper charm for suite turndown gifting.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>Lanserhof Marbella</h3><span class="chip gold">Flagship</span></div>
+      <div class="meta">Finca Cortesín estate, Marbella · medical wellness (opening late 2026)</div>
+      <div class="desc">24,000sqm F.X. Mayr Cure facility opening within Finca Cortesín — positioned as Southern Europe's most advanced medical health resort.</div>
+      <div class="angle">Launch-capsule charm timed to the late-2026 opening.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>Marbella Club</h3><span class="chip gold">Flagship</span></div>
+      <div class="meta">Marbella, Málaga · classic beachfront resort</div>
+      <div class="desc">One of Spain's most exclusive beachfront resorts, understated luxury with a long-standing wellness offer.</div>
+      <div class="angle">Beach-bag charm for poolside/spa gift sets.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>Camiral Golf &amp; Wellness</h3><span class="chip gold">Flagship</span></div>
+      <div class="meta">Costa Brava, Girona · golf &amp; wellness resort</div>
+      <div class="desc">300-hectare countryside resort pairing traditional holistic therapies with technology-led treatments.</div>
+      <div class="angle">Members'-club charm as a loyalty or milestone gift.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>Shanti-Som Wellbeing Retreat</h3><span class="chip teal">Boutique retreat</span></div>
+      <div class="meta">Ojén, near Marbella · yoga &amp; holistic retreat</div>
+      <div class="desc">Small Asian-inspired retreat in the hills above Marbella built around yoga, meditation and personalized care.</div>
+      <div class="angle">Mala-style charm tied to a signature meditation programme.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>Teranka Formentera</h3><span class="chip teal">Boutique retreat</span></div>
+      <div class="meta">Formentera, Balearic Islands · living-art wellness</div>
+      <div class="desc">Boutique retreat set between pine forest and protected dunes, blending art, design and intuitive wellbeing.</div>
+      <div class="angle">Artist-collab charm echoing the retreat's rotating installations.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>Palasiet Thalasso Spa</h3><span class="chip terracotta">Heritage thermal</span></div>
+      <div class="meta">Benicàssim, Costa del Azahar · thalassotherapy (50+ years)</div>
+      <div class="desc">Seawater thalassotherapy house set in a 19th-century villa, one of Spain's longest-running thalasso specialists.</div>
+      <div class="angle">Sea-glass or shell-form charm matching the seawater treatment story.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>Ourense Thermal Belt</h3><span class="chip terracotta">Heritage thermal</span></div>
+      <div class="meta">Ourense, Galicia · natural hot springs district</div>
+      <div class="desc">Europe's second-largest thermal flow after Budapest; public riverside springs (Outariz, A Chavasqueira) plus 20+ spa hotels across the province.</div>
+      <div class="angle">Regional-crest charm for a Galicia thermal-route partnership.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>URSO Hotel &amp; Spa</h3><span class="chip gold">Flagship</span></div>
+      <div class="meta">Madrid · urban luxury spa hotel</div>
+      <div class="desc">Contemporary five-star urban sanctuary in central Madrid, spa built into the hotel's core narrative.</div>
+      <div class="angle">City-break charm sold at check-in or spa reception.</div>
+    </div>
+
+    <div class="card">
+      <div class="top-row"><h3>Gran Hotel La Florida</h3><span class="chip gold">Flagship</span></div>
+      <div class="meta">Tibidabo, Barcelona · urban resort spa</div>
+      <div class="desc">Hilltop Barcelona hotel with panoramic city views, indoor/outdoor pool and an L'Occitane spa.</div>
+      <div class="angle">Skyline-motif charm as a Barcelona arrival gift.</div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <strong>Notes for outreach.</strong> Brands marked <span class="star">★ your list</span> are the ones you named — the rest were selected to sit alongside them on positioning, category, and Spain roots. Status, HQ, and founding details were checked via web search in July 2026, but Instagram handles, current collaboration contacts, and press/PR emails weren't independently verified here — confirm those on each brand's or venue's official site before reaching out. A few (Magrit, Chie Mihara, Meller) are included on strong general knowledge rather than a fresh source check this pass; the same caveat applies to Gran Hotel La Florida in the Spa &amp; Wellness section — worth a quick sanity check before pitching.
+</footer>
